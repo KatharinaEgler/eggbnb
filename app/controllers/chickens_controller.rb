@@ -12,7 +12,13 @@ class ChickensController < ApplicationController
   end
 
   def create
-    @chicken = Chicken.new(c)
+    @chicken = Chicken.new(chicken_params)
+    if @chicken.save
+      redirect_to chickens_path
+    else
+      render :new
+      # redirect_to chicken_new_path
+    end
   end
 
   # def edit
@@ -23,4 +29,10 @@ class ChickensController < ApplicationController
 
   # def destroy
   # end
+
+  private
+
+  def chicken_params
+    params.require(:chicken).permit(:name, :add)
+  end
 end
