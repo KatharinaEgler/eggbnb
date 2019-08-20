@@ -1,0 +1,18 @@
+<h1>create test page</h1>
+
+<%= link_to "test text for new", chickens_path %>
+
+<%= simple_form_for @chicken do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :price %>
+  <%= f.input :egg_volume %>
+  <%= f.input :egg_color %>
+  <%= f.input :description %>
+
+    <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
+    </div>
+  </div>
+</div>
+

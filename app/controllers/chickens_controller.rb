@@ -13,6 +13,7 @@ class ChickensController < ApplicationController
 
   def create
     @chicken = Chicken.new(chicken_params)
+    @chicken.user_id = User.first.id
     if @chicken.save
       redirect_to chickens_path
     else
@@ -33,6 +34,6 @@ class ChickensController < ApplicationController
   private
 
   def chicken_params
-    params.require(:chicken).permit(:name, :add)
+    params.require(:chicken).permit(:name, :add, :price, :egg_color, :egg_volume, :description)
   end
 end
