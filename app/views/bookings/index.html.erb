@@ -6,7 +6,7 @@
       <table class="table table-bordered">
         <tbody>
           <thead>
-            <th>User</th>
+            <th>Chicken name</th>
             <th>Start date</th>
             <th>End date</th>
             <th>Price per day</th>
@@ -14,13 +14,15 @@
           </thead>
           <% @bookings.each do |booking| %>
             <tr>
-              <td><%= @booking.user.name %></td>
-              <td><%= @booking.start_date %></td>
-              <td><%= @booking.end_date %></td>
-              <td>$<%= @booking.chicken.price %></td>
-              <td><%= ( @booking.start_date - @booking.end_date ) * @booking.chicken.price %></td>
-              </td>
+              <%= link_to booking_path(booking) do %>
+                <td><%= booking.chicken.name %></td>
+                <td><%= booking.start_date %></td>
+                <td><%= booking.end_date %></td>
+                <td>$<%= (booking.chicken.price.to_f)/100 %></td>
+                <td>$<%= ( booking.end_date.jd - booking.start_date.jd ) * booking.chicken.price.to_f/100 %></td>
+              <% end %>
             </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
