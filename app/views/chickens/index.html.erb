@@ -1,3 +1,12 @@
-CHICKEN INDEX
+CHICKENS INDEX
+
+<% @chickens.each do |chicken| %>
+<%= chicken.name %> - <%= chicken.age %> - <%= chicken.price %> - <%= chicken.egg_volume %> - <%= chicken.egg_color %> - <%= chicken.description %> - <%= chicken.user_id %>
+<% end %>
+
+<%= link_to "Create a chicken", new_chicken_path %>
+
+
+
 
 
