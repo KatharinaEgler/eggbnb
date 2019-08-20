@@ -1,12 +1,21 @@
-CHICKENS INDEX
+<h2>CHICKENS INDEX</h2>
 
-<% @chickens.each do |chicken| %>
-<%= chicken.name %> - <%= chicken.age %> - <%= chicken.price %> - <%= chicken.egg_volume %> - <%= chicken.egg_color %> - <%= chicken.description %> - <%= chicken.user_id %>
-<% end %>
-
-<%= link_to "Create a chicken", new_chicken_path %>
-
-
-
-
+<div class="container">
+  <div class="row">
+    <ul>
+      <% @chickens.each do |chicken| %>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card-description">
+            <li><strong><%=chicken.name%></strong> (<%= chicken.age %>)</li>
+            <li>"$"<%=chicken.price %></li>
+            <li><%=chicken.egg_color%> <%=chicken.egg_volume "egg per day"%></li>
+            <li><%=chicken.description %></li>
+            <li><%=chicken.user_id %></li>
+            <% end %>
+            <%= link_to "Add a chicken", new_chicken_path, class: "btn btn-primary btn-lg"%>
+          </div>
+        </div>
+    </ul>
+  </div>
+</div>
 
