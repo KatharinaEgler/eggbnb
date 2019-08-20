@@ -1,6 +1,9 @@
-<h1>create test page</h1>
 
-<%= link_to "test text for new", chickens_path %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1>List your chicken</h1>
+
 
 <%= simple_form_for @chicken do |f| %>
   <%= f.input :name %>
