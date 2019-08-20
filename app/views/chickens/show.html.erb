@@ -1,9 +1,9 @@
+
 <div class="container">
   <h2> <%= @chicken.name %> </h2>
   <%= link_to "Back to all chickens", chickens_path %>
 <br>
   <%= cl_image_tag @chicken.photo, height: 300, width: 400, crop: :fill %>
-
 
   <div class="row">
     <div class="col-sm-12 col-md-6">
@@ -18,7 +18,11 @@
           </thead>
             <tr>
               <td><%= @chicken.age %> years old</td>
-              <td><%= @chicken.egg_volume %></td>
+              <td>
+                <% @chicken.egg_volume.times do %>
+                  <i class="fas fa-egg"></i>
+                <% end %>
+                </td>
               <td><%= @chicken.egg_color %></td>
               <td><%= @chicken.description %></td>
               </td>
@@ -27,3 +31,15 @@
       </table>
     </div>
   </div>
+
+<%= simple_form_for [@chicken, @booking] do |f| %>
+  <%= f.input :start_date, as: :date, start_year: Date.today.year, order: [:day, :month, :year], html5: true %>
+  <%= f.input :end_date, as: :date, start_year: Date.today.year, order: [:day, :month, :year], html5: true %>
+  <p>$<%= @chicken.price %></p>
+  <br>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
+
+<%= link_to "Back to all chickens", chickens_path %>
+
+
