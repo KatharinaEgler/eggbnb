@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
   end
 
-  resources :bookings, only: [:index, :update]
+  resources :bookings, only: [:index, :update, :show]
 
   get "chickens/dashboard", to: "chickens#dashboard", as: "dashboard"
 

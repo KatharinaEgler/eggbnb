@@ -1,0 +1,13 @@
+<h1>Booking details</h1>
+
+<% if @booking.status == "Pending" %>
+<ul>
+<li><%= link_to "Accept", booking_path(@booking, status: "Accepted"), method: :patch%>
+</li>
+<li>
+  <%= link_to "Reject", booking_path(@booking, status: "Rejected"), method: :patch%>
+</li>
+</ul>
+<% else %>
+  <p>Your booking has been <%= @booking.status %></p>
+<% end %>
