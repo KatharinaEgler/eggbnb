@@ -5,8 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Chicken.create(name: "Hugo")
-#Chicken.create(name: "Kia", age: 2, egg_color: "blue", price: 50, egg_volume: 2, description: "She is a very calme and family-friendly chicken" )
-#Booking.create(start_date: "24.8.2019", end_date: "12.8.2020", user_id: 1, chicken_id: 1)
+User.destroy_all
+Chicken.destroy_all
+Booking.destroy_all
+
+john = User.new(name: "John Smith", location: "Montreal", rating: 5, email: "john@email.com", password: "chicken")
+john.save!
+#Chicken.create!(name: "Hugo")
+kia = Chicken.new(name: "Kia", age: 2, egg_color: "blue", price: 50, egg_volume: 2, description: "She is a very calme and family-friendly chicken", user_id: john.id)
+kia.save!
+first_booking = Booking.new(start_date: Date.parse("2019-08-23"), end_date: Date.parse("2019-08-30"), user_id: john.id, chicken_id: kia.id)
+first_booking.save!
 #Booking.create(start_date: "13.8.2020", end_date: "20.8.2020", user_id: 2, chicken_id: 1)
-#User.create(name: "John Smith", location: "Montreal", rating: 5)
+puts "seed completed"
