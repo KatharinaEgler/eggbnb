@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.chicken = @chicken
     if @booking.save
-      redirect_to chicken_path(@chicken)
+      redirect_to bookings_path(@booking)
     else
       render "chickens/show"
     end
