@@ -11,15 +11,23 @@
             <th>End date</th>
             <th>Price per day</th>
             <th>Total</th>
+            <th>Status</th>
+            <th>Accept booking</th>
           </thead>
           <% @bookings.each do |booking| %>
             <tr>
               <%= link_to booking_path(booking) do %>
-                <td><%= booking.chicken.name %></td>
+                <td><%= booking.chicken.name%>
+                  <%= booking.chicken.photo %>
+                </td>
                 <td><%= booking.start_date %></td>
                 <td><%= booking.end_date %></td>
                 <td>$<%= (booking.chicken.price.to_f)/100 %></td>
                 <td>$<%= ( booking.end_date.jd - booking.start_date.jd ) * booking.chicken.price.to_f/100 %></td>
+                <td><%= booking.status %></td>
+                <td><%= link_to "Accept", booking_path(booking, status: "Accepted"), method: :patch%>
+                  <%= link_to "Reject", booking_path(booking, status: "Rejected"), method: :patch%>
+                </td>
               <% end %>
             </tr>
           <% end %>
@@ -27,3 +35,5 @@
       </table>
     </div>
   </div>
+
+  <div><%= link_to "Go back to list of chickens", chickens_path, class: "btn btn-primary btn-sm" %></div>
