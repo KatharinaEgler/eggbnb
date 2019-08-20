@@ -34,6 +34,6 @@ class ChickensController < ApplicationController
   private
 
   def chicken_params
-    params.require(:chicken).permit(:name, :add, :price, :egg_color, :egg_volume, :description)
+    params.require(:chicken).permit(:name, :add, :price, :egg_color, :egg_volume, :description, :photo)
   end
 end
