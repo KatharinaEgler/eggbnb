@@ -1,3 +1,29 @@
-<h2>chicken.name</h2>
+<div class="container">
+  <h2> <%= @chicken.name %> </h2>
+  <%= link_to "Back to all chickens", chickens_path %>
+<br>
+  <%= cl_image_tag @chicken.photo, height: 300, width: 400, crop: :fill %>
 
-<%= chicken.age %> - <%= chicken.price %> - <%= chicken.egg_volume %> - <%= chicken.egg_color %> - <%= chicken.description %> - <%= chicken.user_id %>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <h3>Chicken characteristic</h3>
+      <table class="table table-bordered">
+        <tbody>
+          <thead>
+            <th>Age</th>
+            <th>Egg number per day</th>
+            <th>Egg color</th>
+            <th>Description</th>
+          </thead>
+            <tr>
+              <td><%= @chicken.age %> years old</td>
+              <td><%= @chicken.egg_volume %></td>
+              <td><%= @chicken.egg_color %></td>
+              <td><%= @chicken.description %></td>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

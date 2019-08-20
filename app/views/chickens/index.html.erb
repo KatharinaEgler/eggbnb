@@ -2,20 +2,23 @@
 
 <div class="container">
   <div class="row">
-    <ul>
-      <% @chickens.each do |chicken| %>
-        <div class="col-12 col-md-6 col-lg-3">
+    <% @chickens.each do |chicken| %>
+      <div class="col-12 col-md-6 col-lg-3">
+        <% if chicken.photo? %>
+          <% background_url = cl_image_path chicken.photo, width: 400, height: 500, crop: :fill %>
+        <% else %>
+          <% background_url = 'https://images.unsplash.com/photo-1501200291289-c5a76c232e5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2781&q=80' %>
+        <% end %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= background_url %>');">
           <div class="card-description">
-            <li><strong><%=chicken.name%></strong> (<%= chicken.age %>)</li>
-            <li>"$"<%=chicken.price %></li>
-            <li><%=chicken.egg_color%> <%=chicken.egg_volume "egg per day"%></li>
-            <li><%=chicken.description %></li>
-            <li><%=chicken.user_id %></li>
-            <% end %>
-            <%= link_to "Add a chicken", new_chicken_path, class: "btn btn-primary btn-lg"%>
+            <h2><strong><%=chicken.name%></strong></h2>
+            <p>$<%=chicken.price %></p>
           </div>
+          <%= link_to "See", chicken_path(chicken)%>
         </div>
-    </ul>
+      </div>
+    <% end %>
   </div>
 </div>
 
+<%= link_to "Add a chicken", new_chicken_path, class: "btn btn-primary btn-lg"%>
