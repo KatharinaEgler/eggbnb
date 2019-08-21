@@ -46,15 +46,23 @@
         <%= simple_form_for [@chicken, @booking] do |f| %>
           <p><%= f.input :start_date, as: :date, start_year: Date.today.year, order: [:day, :month, :year], html5: true %></p>
           <p><%= f.input :end_date, as: :date, start_year: Date.today.year, order: [:day, :month, :year], html5: true %></p>
-          <p id="booking_price">Price: $<%= (@chicken.price.to_f)/100 %></p>
-          <div id="total-price-calculated"></div>
+          <p id="booking_price">Price per day: $<%= (@chicken.price.to_f)/100 %></p>
+          <p id="total-price-calculated" data-price-per-day = "<%=(@chicken.price.to_f)/100  %>"> </p>
         <br>
         <p><%= f.button :submit, class: 'btn btn-primary' %></p>
         <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <br>
       </div>
     </div>
   </div>
+</div>
+<br>
+<div>
+  <p>
+
+  </p>
+    <%= link_to "Check your bookings", bookings_path, class: "btn btn-primary" %>
 </div>
