@@ -1,7 +1,9 @@
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
+  flex-shrink: 0;
+  width: 40%;
 }
 
 .card-category {
@@ -27,4 +29,10 @@ display: flex;
 justify-content: center;
 align-items: center;
 background-size: cover;
+}
+
+.chicken-card {
+  border: 3px solid red;
+  flex-shrink: 0;
+  width: 100%;
 }
