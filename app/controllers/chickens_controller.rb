@@ -14,6 +14,7 @@ class ChickensController < ApplicationController
 
   def create
     @chicken = Chicken.new(chicken_params)
+    @chicken.price = @chicken.price * 100
     @chicken.user_id = User.first.id
     if @chicken.save
       redirect_to chickens_path

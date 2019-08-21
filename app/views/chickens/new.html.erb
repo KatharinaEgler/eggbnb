@@ -8,7 +8,8 @@
 <%= simple_form_for @chicken do |f| %>
   <%= f.input :name %>
   <%= f.input :age %>
-  <%= f.input :price %>
+  <%= f.input :price,
+              hint: ("Please add your price in dollars")%>
   <%= f.input :egg_volume %>
   <%= f.input :egg_color %>
   <%= f.input :description %>
