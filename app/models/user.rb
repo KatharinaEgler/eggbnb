@@ -6,4 +6,10 @@ class User < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :chickens, dependent: :destroy
+
+  mount_uploader :photo, PhotoUploader
+
+  validates :email, presence: true, uniqueness: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 end

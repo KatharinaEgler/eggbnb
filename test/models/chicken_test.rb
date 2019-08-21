@@ -5,3 +5,6 @@ class ChickenTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+
+class Flat < ApplicationRecord
+end

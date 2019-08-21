@@ -1,6 +1,6 @@
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
 }
 
@@ -27,4 +27,9 @@ display: flex;
 justify-content: center;
 align-items: center;
 background-size: cover;
+}
+
+.chicken-card {
+  flex-shrink: 0;
+  width: 100%;
 }

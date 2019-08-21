@@ -12,11 +12,12 @@ class BookingsController < ApplicationController
     @chicken = Chicken.find(params[:chicken_id])
     @booking = Booking.new(booking_params)
     @booking.chicken = @chicken
-    if @booking.save
-      redirect_to bookings_path(@booking)
+    @booking.user = current_user
+    if @booking.save!
+      redirect_to chickens_path
     else
-      render "chickens/show"
-    end
+       render "chickens/show"
+     end
   end
 
 

@@ -1,0 +1,2 @@
+class ChickenListing < ApplicationRecord
+end

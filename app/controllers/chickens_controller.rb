@@ -1,6 +1,16 @@
 class ChickensController < ApplicationController
   def index
-    @chickens = Chicken.all
+    # @chickens = Chicken.all
+    @chickens = Chicken.geocoded
+
+   @markers = @chickens.map do |chicken|
+     {
+       lat: chicken.latitude,
+       lng: chicken.longitude,
+       image_url: helpers.asset_url('logo1.png')
+       # infoWindow: render_to_string(partial: "info_window", locals: { chicken: chicken })
+     }
+    end
   end
 
   def show
@@ -14,8 +24,9 @@ class ChickensController < ApplicationController
 
   def create
     @chicken = Chicken.new(chicken_params)
+    #@chicken.price = @chicken.price * 100
     @chicken.user_id = User.first.id
-    if @chicken.save
+    if @chicken.save!
       redirect_to chickens_path
     else
       render :new
@@ -35,6 +46,6 @@ class ChickensController < ApplicationController
   private
 
   def chicken_params
-    params.require(:chicken).permit(:name, :add, :price, :egg_color, :egg_volume, :description, :photo)
+    params.require(:chicken).permit(:name, :age, :price, :egg_color, :egg_volume, :description, :photo)
   end
 end
