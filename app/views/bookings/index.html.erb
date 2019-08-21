@@ -18,7 +18,7 @@
             <tr>
               <%= link_to booking_path(booking) do %>
                 <td><%= booking.chicken.name%>
-                  <%= booking.chicken.photo %>
+                  <%= cl_image_tag booking.chicken.photo, width: 50, height: 40, crop: :fill %>
                 </td>
                 <td><%= booking.start_date %></td>
                 <td><%= booking.end_date %></td>
