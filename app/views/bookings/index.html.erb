@@ -22,8 +22,8 @@
                 </td>
                 <td><%= booking.start_date %></td>
                 <td><%= booking.end_date %></td>
-                <td>$<%= (booking.chicken.price.to_f)/100 %></td>
-                <td>$<%= ( booking.end_date.jd - booking.start_date.jd ) * booking.chicken.price.to_f/100 %></td>
+                <td>$<%= booking.chicken.price %></td>
+                <td>$<%= ( booking.end_date.jd - booking.start_date.jd ) * booking.chicken.price %></td>
                 <td><%= booking.status %></td>
                 <td><%= link_to "Accept", booking_path(booking, status: "Accepted"), method: :patch%>
                   <%= link_to "Reject", booking_path(booking, status: "Rejected"), method: :patch%>
