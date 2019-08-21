@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @booking.chicken = @chicken
     @booking.user = current_user
     if @booking.save!
-      redirect_to chickens_path
+      redirect_to bookings_path
     else
        render "chickens/show"
      end
