@@ -1,6 +1,16 @@
 class ChickensController < ApplicationController
   def index
-    @chickens = Chicken.all
+    # @chickens = Chicken.all
+    @chickens = Chicken.geocoded
+
+   @markers = @chickens.map do |chicken|
+     {
+       lat: chicken.latitude,
+       lng: chicken.longitude,
+       image_url: helpers.asset_url('logo1.png')
+       # infoWindow: render_to_string(partial: "info_window", locals: { chicken: chicken })
+     }
+    end
   end
 
   def show

@@ -15,7 +15,8 @@ bill = User.new(first_name: "Bill", last_name: "Farmer", location: "Montreal", r
 bill.save!
 
 #Chicken.create!(name: "Hugo")
-kia = Chicken.new(name: "Kia", age: 2, egg_color: "blue", price: 0.5, egg_volume: 2, description: "She is a very calme and family-friendly chicken", user_id: john.id, remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566414587/sven-hornburg-Jgabeh9Yx6w-unsplash_x24lqt.jpg")
+
+kia = Chicken.new(name: "Kia", address:"Bergen Street, Brooklyn, New York", age: 2, egg_color: "blue", price: 0.5, egg_volume: 2, description: "She is a very calme and family-friendly chicken", user_id: john.id,remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566414587/sven-hornburg-Jgabeh9Yx6w-unsplash_x24lqt.jpg")
 kia.save!
 roberta = Chicken.new(name: "Roberta", age: 3, egg_color: "green", price: 0.4, egg_volume: 1, description: "She is a relaxed chicken", user_id: bill.id, remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566414586/john-towner-0uN9iF4mgDI-unsplash_bqyg2m.jpg")
 roberta.save!
