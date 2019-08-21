@@ -9,12 +9,19 @@ User.destroy_all
 Chicken.destroy_all
 Booking.destroy_all
 
-john = User.new(name: "John Smith", location: "Montreal", rating: 5, email: "john@email.com", password: "chicken")
+john = User.new(first_name: "John", last_name: "Smith", location: "Montreal", rating: 5, email: "john@email.com", password: "chicken", remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566414756/caroline-hernandez-TMpQ5R9mbOc-unsplash_xowaqt.jpg")
 john.save!
+bill = User.new(first_name: "Bill", last_name: "Farmer", location: "Montreal", rating: 5, email: "bill@email.com", password: "chicken", remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566414586/gregory-hayes-QFmNQXLPbZc-unsplash_uzib8w.jpg")
+bill.save!
+
 #Chicken.create!(name: "Hugo")
-kia = Chicken.new(name: "Kia", age: 2, egg_color: "blue", price: 50, egg_volume: 2, description: "She is a very calme and family-friendly chicken", user_id: john.id)
+kia = Chicken.new(name: "Kia", age: 2, egg_color: "blue", price: 0.5, egg_volume: 2, description: "She is a very calme and family-friendly chicken", user_id: john.id, remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566414587/sven-hornburg-Jgabeh9Yx6w-unsplash_x24lqt.jpg")
 kia.save!
-first_booking = Booking.new(start_date: Date.parse("2019-08-23"), end_date: Date.parse("2019-08-30"), user_id: john.id, chicken_id: kia.id)
+roberta = Chicken.new(name: "Roberta", age: 3, egg_color: "green", price: 0.4, egg_volume: 1, description: "She is a relaxed chicken", user_id: bill.id, remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566414586/john-towner-0uN9iF4mgDI-unsplash_bqyg2m.jpg")
+roberta.save!
+first_booking = Booking.new(start_date: Date.parse("2019-09-07"), end_date: Date.parse("2019-10-23"), user_id: john.id, chicken_id: kia.id)
 first_booking.save!
+second_booking = Booking.new(start_date: Date.parse("2019-08-23"), end_date: Date.parse("2019-08-30"), user_id: john.id, chicken_id: roberta.id)
+second_booking.save!
 #Booking.create(start_date: "13.8.2020", end_date: "20.8.2020", user_id: 2, chicken_id: 1)
 puts "seed completed"

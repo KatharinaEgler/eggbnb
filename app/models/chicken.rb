@@ -5,9 +5,9 @@ class Chicken < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   validates :name, presence: true, uniqueness: true
-  validates :age, presence: true, length: { in: 0..30 }
-  validates :egg_volume, presence: true, length: { in: 0..5 }
+  validates :age, presence: true
+  validates :egg_volume, presence: true
   validates :photo, presence: true
   validates :description, presence: true
-  validates :price, presence: true, length: { in: 10..500 }
+  validates :price, presence: true
 end
