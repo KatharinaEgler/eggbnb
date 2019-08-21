@@ -1,6 +1,6 @@
 class ChickensController < ApplicationController
   def index
-    # @chickens = Chicken.all
+    #@chickens = Chicken.all
     @chickens = Chicken.geocoded
 
    @markers = @chickens.map do |chicken|
