@@ -1,4 +1,13 @@
 .chickens-container{
 display: flex;
 justify-content: space-between;
+align-items: flex-start;
+
+  .left-column{
+    text-align: center;
+    flex-shrink: 0;
+    width: 50%;
+    padding-right: 24px;
+  }
 }
+
