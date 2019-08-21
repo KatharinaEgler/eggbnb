@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://s0.2mdn.net/4018890/1565381349399/index.html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="ad.size" content="width=300,height=600">
+
+        <link rel="stylesheet" type="text/css" href="./banner.css">
+        <link rel="stylesheet" type="text/css" href="./fonts.css">
+        <link rel="stylesheet" type="text/css" href="./mazda.css">
+
+        <!-- Full list of available libraries can be found here https://support.google.com/richmedia/answer/6307288 and here https://developers.google.com/speed/libraries/ -->
+        <script type="text/javascript" src="./jquery.min.js"></script>
+
+        <!-- Greensock data loaded from DoubleClick -->
+        <script type="text/javascript" src="./tweenmax_1.18.0_499ba64a23378545748ff12d372e59e9_min.js"></script>
+    <script type="text/javascript">
+    
+  (function() {
+    var MAX_URL_PARAM_LENGTH = 34;
+    var CLICK_X_URL_KEY = 'nx';
+    var CLICK_Y_URL_KEY = 'ny';
+    var CREATIVE_DIMENSIONS_KEY = 'dim';
+    var AD_URL_PARAM = '&adurl=';
+
+    var relegateNavigation = '';
+    var urlParamMap = {};
+
+    urlParamMap[CLICK_X_URL_KEY] = null;
+    urlParamMap[CLICK_Y_URL_KEY] = null;
+    urlParamMap[CREATIVE_DIMENSIONS_KEY] = null;
+
+    var handleClickTagMessage = function(e) {
+      try {
+        var eventData = JSON.parse(e.data);
+      } catch (err) {
+        return;
+      }
+      if (eventData.isInitClickTag) {
+        if (eventData.clickTags) {
+          for (var i = 0; i < eventData.clickTags.length; i++) {
+            var clkTag = eventData.clickTags[i];
+            window[clkTag.name] = clkTag.url;
+          }
+        } else if (eventData.clickTag) {
+          window.clickTag = eventData.clickTag;
+        }
+        relegateNavigation = eventData.relegateNavigation;
+      }
+    };
+
+    var storeClickCoordinates = function(e) {
+      urlParamMap[CLICK_X_URL_KEY] = Math.round(e.clientX);
+      urlParamMap[CLICK_Y_URL_KEY] = Math.round(e.clientY);
+    };
+
+    var getCreativeDimensions = function() {
+      return window.innerWidth + 'x' + window.innerHeight;
+    }
+
+    var getExitClickParams = function(e) {
+      urlParamMap[CREATIVE_DIMENSIONS_KEY] = getCreativeDimensions();
+
+      var exitParams = '';
+      for (var key in urlParamMap) {
+        exitParams += '&' + key + '=';
+        if (urlParamMap[key] !== null) {
+          exitParams += urlParamMap[key];
+        }
+      }
+      return exitParams;
+    }
+
+    var appendExitClickParams = function(url) {
+      var adUrlIndex = url.toLowerCase().indexOf(AD_URL_PARAM);
+      var paramsToBeAdded = getExitClickParams();
+      if (adUrlIndex > -1 && paramsToBeAdded.length <= MAX_URL_PARAM_LENGTH) {
+        url = url.substr(0, adUrlIndex) + paramsToBeAdded +
+          url.substr(adUrlIndex);
+      };
+      return url;
+    };
+
+    if (open.call) {
+      window.open = function(open) {
+        return function(url, name, features) {
+          url = appendExitClickParams(url);
+          if (relegateNavigation === 'parent') {
+            var message = {'clickTag': url, 'isPostClickTag': true};
+            parent.postMessage(JSON.stringify(message), '*');
+          } else {
+            var args = [url, name];
+            if (features) {
+              args.push(features);
+            }
+            open.apply(window, args);
+          }
+        };
+      }(window.open);
+    }
+
+    if (window.addEventListener) {
+      window.addEventListener(
+          'message', handleClickTagMessage, false);
+      window.addEventListener('mousedown', storeClickCoordinates, true);
+    } else {
+      window.attachEvent('onmessage', handleClickTagMessage);
+    }
+  })();
+    
+  </script></head>
+
+    <body class="banner_300x600"><!-- THIS LINE IS ALWAYS REQUIRED -->
+        <div class="bannerContainer"><!-- THIS LINE IS ALWAYS REQUIRED -->
+            <div id="exit" style="display: block;"></div> <!-- THIS LINE IS ALWAYS REQUIRED -->
+                <div class="ad" id="ad" style="display: block;"><!-- THIS LINE IS ALWAYS REQUIRED -->
+
+                    <div class="force3d retina" id="bg1" style="transform: matrix3d(1, 0.000174533, 0, 0, -0.000174533, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);"></div>
+                    <div class="force3d hidden retina" id="bg2" style="transform: matrix3d(1, 0.000174533, 0, 0, -0.000174533, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); visibility: inherit; opacity: 1;"></div>
+                    <div class="force3d hidden retina" id="bg3" style="transform: matrix3d(1, 0.000174533, 0, 0, -0.000174533, 1, 0, 0, 0, 0, 1, 0, -20, 0, 0, 1); visibility: inherit; opacity: 1;"></div>
+
+                    <div class="retina" id="logo"></div>
+
+                    <div class="copytext text_lg" id="text1" style="visibility: hidden; opacity: 0;">UNE CONDUITE<br>INSPIRANTE, C’EST</div>
+                    <div class="hidden copytext text_lg" id="text2" style="visibility: hidden; opacity: 0;">LA CONFIANCE<br>EN TOUTES CONDITIONS</div>
+                    <div class="hidden copytext text_lg" id="text3a" style="visibility: inherit; opacity: 1;">LA NOUVELLE MAZDA3</div>
+                    <div class="hidden copytext text_sm" id="text3b" style="visibility: inherit; opacity: 1;">POUR LA PREMIÈRE FOIS OFFERTE<br>AVEC TRACTION INTÉGRALE</div>
+                    <!-- <div class="hidden copytext text_tiny" id="text3c">Vivez chaque instant<sup>MC</sup></div> -->
+                    <div class="hidden copytext text_tiny" id="text3c" style="visibility: inherit; opacity: 1;"></div>
+                    
+                    <div id="ctaContainer" tabindex="0">
+                        <div id="cta" tabindex="0" class="force3d hidden clickable" style="transform: matrix3d(1, 0.000174533, 0, 0, -0.000174533, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); visibility: inherit; opacity: 1;">CONSTRUISEZ VOTRE MAZDA</div>
+                    </div>
+
+                    <div class="force3d" id="blackBlocker" style="transform: matrix3d(1, 0.000174533, 0, 0, -0.000174533, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);"></div>
+
+        </div>
+
+        <script>var clickTag = "http://www.google.org";</script>
+        <script src="./default.js"></script>
+    
+
+
+
+</div></body></html>
