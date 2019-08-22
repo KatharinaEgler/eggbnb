@@ -12,4 +12,8 @@ Rails.application.routes.draw do
 
   # get "chickens/dashboard", to: "chickens#dashboard", as: "dashboard"
 
+  resources :conversations do
+  resources :messages
+    end
+
 end
