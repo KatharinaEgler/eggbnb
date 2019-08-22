@@ -1,15 +1,19 @@
 class ChickensController < ApplicationController
   def index
-    #@chickens = Chicken.all
-    @chickens = Chicken.geocoded
+    # @chickens = Chicken.all
 
-   @markers = @chickens.map do |chicken|
-     {
+    # PUNDIT:
+    # @chickens = policy_scope(Chicken) ==> HOW TO INCLUDE THIS WHITOUT MAKING TROUBLE WITH GEOCODE??
+
+    # GEOMAP:
+    @chickens = Chicken.geocoded
+    @markers = @chickens.map do |chicken|
+      {
        lat: chicken.latitude,
        lng: chicken.longitude,
        image_url: helpers.asset_url('logo1.png')
        # infoWindow: render_to_string(partial: "info_window", locals: { chicken: chicken })
-     }
+      }
     end
   end
 
@@ -24,8 +28,13 @@ class ChickensController < ApplicationController
 
   def create
     @chicken = Chicken.new(chicken_params)
-    #@chicken.price = @chicken.price * 100
+
+    # @chicken.price = @chicken.price * 100
     @chicken.user_id = User.first.id
+
+    # PUNDIT:
+    authorize @restaurant
+
     if @chicken.save!
       redirect_to chickens_path
     else
