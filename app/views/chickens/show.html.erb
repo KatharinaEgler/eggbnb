@@ -29,8 +29,20 @@
     </table>
   </div>
 
+<% if policy(@chicken).edit? %>
+<div><%= link_to "Edit", edit_chicken_path(@chicken), class: "btn btn-primary" %></div>
+<% end %>
+
+<% if policy(@chicken).destroy? %>
+<div><%= link_to "Delete", chicken_path(@chicken), method: :delete, class: "btn btn-primary" %></div>
+<% end %>
+
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Book</button>
+<% if current_user == nil %>
+  <div><%= link_to "Book", new_user_session_path, class: "btn btn-primary" %></div>
+<% elsif current_user != @chicken.user %>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Book</button>
+<% end %>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -58,11 +70,4 @@
       </div>
     </div>
   </div>
-</div>
-<br>
-<div>
-  <p>
-
-  </p>
-    <%= link_to "Check your bookings", bookings_path, class: "btn btn-primary" %>
 </div>

@@ -1,12 +1,13 @@
 class ChickensController < ApplicationController
-  def index
-    # @chickens = Chicken.all
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_chicken, only: [:show, :edit, :update, :destroy]
 
+  def index
     # PUNDIT:
-    # @chickens = policy_scope(Chicken) ==> HOW TO INCLUDE THIS WHITOUT MAKING TROUBLE WITH GEOCODE??
+    @chickens = policy_scope(Chicken)
 
     # GEOMAP:
-    @chickens = Chicken.geocoded
+    # @chickens = Chicken.geocoded
     @markers = @chickens.map do |chicken|
       {
        lat: chicken.latitude,
@@ -18,43 +19,58 @@ class ChickensController < ApplicationController
   end
 
   def show
-    @chicken = Chicken.find(params[:id])
     @booking = Booking.new
+    authorize @chicken
   end
 
   def new
-    @chicken = Chicken.new
+    @chicken = current_user.chickens.new
+    authorize @chicken
   end
 
   def create
-    @chicken = Chicken.new(chicken_params)
-
-    # @chicken.price = @chicken.price * 100
-    @chicken.user_id = User.first.id
-
-    # PUNDIT:
-    authorize @restaurant
+    @chicken = current_user.chickens.new(chicken_params)
+    authorize @chicken
+    # @chicken.price = @chicken.price * 100 ==> is it still necessary to keep this as a comment?
+    # @chicken.user_id = User.first.id ==> comment this line because doesn't work
 
     if @chicken.save!
-      redirect_to chickens_path
+      redirect_to chicken_path(@chicken)
     else
       render :new
       # redirect_to chicken_new_path
     end
   end
 
-  # def edit
-  # end
+  def edit
+    authorize @chicken
+  end
 
-  # def update
-  # end
+  def update
+    authorize @restaurant
 
-  # def destroy
-  # end
+    if @chicken.update(chicken_params)
+      redirect_to chicken_path(@chicken)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    authorize @chicken
+
+    @chicken.destroy
+
+    redirect_to chickens_path
+  end
 
   private
 
   def chicken_params
     params.require(:chicken).permit(:name, :address, :age, :price, :egg_color, :egg_volume, :description, :photo)
+  end
+
+  def set_chicken
+    @chicken = Chicken.find(params[:id])
   end
 end
