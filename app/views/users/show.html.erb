@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 class="user-name"> <%= @user.first_name %> <%= @user.last_name %> </h1>
+  <%= link_to "Edit your profile", edit_user_registration_path(@user) %>
+<br>
+  <%= cl_image_tag @user.photo, height: 300, width: 1000, crop: :fill %>
+
+  <div class="row">
+    <h3>Profile details</h3>
+    <table class="table table-bordered">
+      <tbody>
+        <thead>
+          <th>Your rating</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Email</th>
+        </thead>
+          <tr>
+            <td><% @user.rating.times do %>
+                <i class="fas fa-star"></i>
+              <% end %></td>
+            <td><%= @user.first_name %></td>
+            <td><%= @user.last_name %></td>
+            <td><%= @user.email %></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
