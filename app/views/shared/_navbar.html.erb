@@ -33,6 +33,19 @@
           </div>
         </li>
       <% else %>
+        <li>
+          <form class="form-inline">
+          <label for="">Start Date </label>
+          <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+          <label for="">End Date </label>
+          <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+          <input class="form-control mr-sm-2" type="address" placeholder="Where are you?" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%= link_to "Find a chicken", chickens_path %></button>
+          </form>
+        </li>
+        <li>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%= link_to "List a new chicken", new_chicken_path %></button>
+        </li>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
