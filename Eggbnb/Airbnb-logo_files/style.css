@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    padding: 0;
+   
+}
+
+/* Classes */
+.abs {
+    position: absolute;
+}
+
+.rel {
+    position: relative;
+}
+.imgProps {
+    width:280px; 
+    height:174px; 
+    overflow:hidden; 
+    top:0px;
+}
+
+.vcenter {  
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.center {position: absolute; text-align: center; margin: auto;}
+
+.cta_text {
+    width: auto;
+    height: 10px;
+    display: block;
+    
+}
+
+/* IDs */
+
+#text2 {
+    width: auto;
+    height: 49px;
+    left: 0px;
+    top: 63px;
+  ;
+}
+
+#video {
+
+}
+
+
+#stage, #border {
+    width: 300px; 
+    height: 250px; 
+}
+
+#bar {
+    background-color: #ae0000; 
+ 
+}
+#cta {
+    border: 1px solid #fff;
+    background-color: #fff;
+}
+
+
+#bar {
+    width: 280px;
+    height: 10px; 
+    overflow:hidden;
+    top: 0px;
+    left: 0px;
+}
+
+
+
+#stage {
+    background-color:#000; 
+    overflow:hidden;
+   
+}
+
+#bannerContent {
+    top: 10px;
+    left: 10px;
+    opacity: 0;
+    background-color: #000;
+}
+
+#cta, #cta:hover {
+    /*max-width: 138px;*/
+    height: 18px;
+    left: 0px;
+    top: 212px;  
+   
+    display: block;
+   
+    cursor: pointer;
+}
+
+#cta {
+    border: 1px solid #aa0f1d;
+}
+
+
+#cta {
+    background-color: #aa0f1d; 
+}
+
+#cta:hover {
+    background-color: #aa0f1d;
+ 
+}
+
+#cta_off {
+    width: auto;
+    height: 9px;
+}
+
+#jcw_logo {
+    left: 10px;
+    top: 144px;  
+    width: auto;
+    height: 20px;;
+    
+}
+
+
+#logo {
+    right: 20px;
+    bottom: -210px;  
+    width: 82px;
+    height: 36px;
+}
+

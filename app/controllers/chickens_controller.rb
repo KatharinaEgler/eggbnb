@@ -1,6 +1,6 @@
 class ChickensController < ApplicationController
   def index
-    # @chickens = Chicken.all
+    #@chickens = Chicken.all
     @chickens = Chicken.geocoded
 
    @markers = @chickens.map do |chicken|
@@ -46,6 +46,6 @@ class ChickensController < ApplicationController
   private
 
   def chicken_params
-    params.require(:chicken).permit(:name, :age, :price, :egg_color, :egg_volume, :description, :photo)
+    params.require(:chicken).permit(:name, :address, :age, :price, :egg_color, :egg_volume, :description, :photo)
   end
 end
