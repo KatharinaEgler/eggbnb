@@ -43,14 +43,18 @@
         </button>
       </div>
       <div class="modal-body">
+        <div class="form-container">
+        <!-- added styling to upcase form fields and format spacing -->
+          <h1>You're one step away from farm fresh eggs...</h1>
         <%= simple_form_for [@chicken, @booking] do |f| %>
-          <p><%= f.input :start_date, as: :date, start_year: Date.today.year, order: [:day, :month, :year], html5: true %></p>
-          <p><%= f.input :end_date, as: :date, start_year: Date.today.year, order: [:day, :month, :year], html5: true %></p>
+          <p><%= f.input :start_date, as: :date, start_year: Date.today.year, order: [:day, :month, :year], html5: true, wrapper_html: {class: "eggbnb-inputs"} %></p>
+          <p><%= f.input :end_date, as: :date, start_year: Date.today.year, order: [:day, :month, :year], html5: true, wrapper_html: {class: "eggbnb-inputs"} %></p>
           <p id="booking_price">Price per day: $<%= @chicken.price %></p>
           <p id="total-price-calculated" data-price-per-day = "<%=@chicken.price  %>"> </p>
         <br>
         <p><%= f.button :submit, class: 'btn btn-primary' %></p>
         <% end %>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
