@@ -5,31 +5,35 @@
 <div class="chickens-container">
 
   <div class="left-column">
+    <div class="chicken-index">
 
-    <div class="chickens-header">
-      <h2>CHICKENS INDEX</h2>
-      <p>Awesome chicken to nest egg! </p>
-    </div>
-
-    <div class="cards">
-      <% @chickens.each do |chicken| %>
-
-        <div class="chicken-card">
-          <a href= <%= chicken_path(chicken) %> >
-            <% if chicken.photo? %>
-              <% background_url = cl_image_path chicken.photo, width: 400, height: 500, crop: :fill %>
-            <% else %>
-              <% background_url = 'https://images.unsplash.com/photo-1501200291289-c5a76c232e5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2781&q=80' %>
-            <% end %>
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url('<%= background_url %>');">
-              <div class="card-description">
-                <h2><strong><%=chicken.name%></strong></h2>
-                <p>$<%= chicken.price %> per day </p>
-              </div>
-            </div>
-          </a>
+      <div class="chickens-header">
+        <h2>All the chicken available in Montreal</h2>
       </div>
-      <% end %>
+
+      <div class="cards">
+        <% @chickens.each do |chicken| %>
+
+          <div class="chicken-card">
+            <a href= <%= chicken_path(chicken) %> >
+              <% if chicken.photo? %>
+                <% background_url = cl_image_path chicken.photo, width: 400, height: 500, crop: :fill %>
+              <% else %>
+                <% background_url = 'https://images.unsplash.com/photo-1501200291289-c5a76c232e5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2781&q=80' %>
+              <% end %>
+              <div class= "chicken-card-total">
+                <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= background_url %>');">
+                  <div class="card-description">
+                    <h2><strong><%=chicken.name%></strong></h2>
+                  </div>
+                </div>
+                <span class="chicken-card-price">$<%= chicken.price %> /day</span>
+                <p class="chicken-card-egg-volume"><%= chicken.egg_volume %> egg/day</p>
+              </div>
+            </a>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
   <div

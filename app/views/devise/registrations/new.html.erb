@@ -1,4 +1,9 @@
-<h2>Sign up</h2>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="form-container">
+        <h1>Sign up</h1>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -7,32 +12,42 @@
     <%= f.input :first_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "first_name" }%>
+                input_html: { autocomplete: "first_name" },
+                wrapper_html: {class: "eggbnb-inputs"} %>
     <%= f.input :last_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "last_name" }%>
+                input_html: { autocomplete: "last_name" },
+                wrapper_html: {class: "eggbnb-inputs"}%>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "email" },
+                wrapper_html: {class: "eggbnb-inputs"}%>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password" },
+                wrapper_html: {class: "eggbnb-inputs"} %>
     <%= f.input :password_confirmation,
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password" },
+                wrapper_html: {class: "eggbnb-inputs"} %>
     <%= f.input :photo,
                 required: true,
-                hint: ("Please add your profile picture here") %>
+                hint: ("Please add your profile picture here"),
+                wrapper_html: {class: "eggbnb-inputs"} %>
 
 
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, value: "Sign up", class: 'btn btn-lg btn-primary big-btn-form' %>
   </div>
 <% end %>
+    </div>
+  </div>
+  </div>
+</div>
 
 <%= render "devise/shared/links" %>
