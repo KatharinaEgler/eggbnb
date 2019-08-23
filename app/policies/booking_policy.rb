@@ -14,10 +14,10 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user  # Only chicken creator can update it
+    record.chicken.user == user  # Only chicken creator can update it
   end
 
   def destroy?
-    record.user == user  # Only chicken creator can update it
+    record.chicken.user == user  # Only chicken creator can update it
   end
 end

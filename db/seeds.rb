@@ -37,7 +37,7 @@ bossy = Chicken.new(name: "Bossy", address:"4581 Park Ave, Montreal", age: 5, eg
 bossy.save!
 meggy = Chicken.new(name: "Meggy", address:"2047 Mont-Royal Ave E, Montreal", age: 3, egg_color: "green", price: 0.4, egg_volume: 1, description: "She does not like people and is very shy", user_id: maria.id, remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566573112/kazi-faiz-ahmed-jeem-hXXncjTJJ1g-unsplash_wpllmn.jpg")
 meggy.save!
-dani = Chicken.new(name: "Dani", address:"1019 Mont-Royal Ave E", age: 3, egg_color: "brown", price: 0.4, egg_volume: 1, description: "She is a bit crazy", user_id: maria.id, remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566573114/jason-leung-AVbFNg1r9fg-unsplash_arsvty.jpg")
+dani = Chicken.new(name: "Dani", address:"1019 Mont-Royal Ave E, Montreal", age: 3, egg_color: "brown", price: 0.4, egg_volume: 1, description: "She is a bit crazy", user_id: maria.id, remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566573114/jason-leung-AVbFNg1r9fg-unsplash_arsvty.jpg")
 dani.save!
 sandy = Chicken.new(name: "Sandy", address:"3801 Rue Université, Montréal", age: 10, egg_color: "white", price: 0.3, egg_volume: 1, description: "She loves dogs", user_id: samuel.id, remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566573111/patrick-kariuki-AS5BN2vntRg-unsplash_ohmwwy.jpg")
 sandy.save!

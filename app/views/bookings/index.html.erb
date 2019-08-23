@@ -2,10 +2,12 @@
 
   <div class="row">
     <div class="col-sm-12 col-md-6">
-      <h3>Chicken Booking</h3>
+      <h3>My bookings</h3>
       <table class="table table-bordered">
         <tbody>
           <thead>
+            <th>Booker name</th>
+            <th>Chicken owner</th>
             <th>Chicken name</th>
             <th>Start date</th>
             <th>End date</th>
@@ -14,9 +16,51 @@
             <th>Status</th>
             <th>Accept booking</th>
           </thead>
-          <% @bookings.each do |booking| %>
+          <% @my_bookings.each do |booking| %>
             <tr>
               <%= link_to booking_path(booking) do %>
+                <td><%= booking.user.first_name%>
+                <td><%= booking.chicken.user.first_name%>
+                <td><%= booking.chicken.name%>
+                  <%= cl_image_tag booking.chicken.photo, width: 50, height: 40, crop: :fill %>
+                </td>
+                <td><%= booking.start_date %></td>
+                <td><%= booking.end_date %></td>
+                <td>$<%= booking.chicken.price %></td>
+                <td>$<%= ( booking.end_date.jd - booking.start_date.jd ) * booking.chicken.price %></td>
+                <td><%= booking.status %></td>
+                <td><%= link_to "Accept", booking_path(booking, status: "Accepted"), method: :patch%>
+                  <%= link_to "Reject", booking_path(booking, status: "Rejected"), method: :patch%>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+      <h3>My chickens</h3>
+      <table class="table table-bordered">
+        <tbody>
+          <thead>
+            <th>Booker name</th>
+            <th>Chicken owner</th>
+            <th>Chicken name</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Price per day</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Accept booking</th>
+          </thead>
+          <% @my_chickens.each do |booking| %>
+            <tr>
+              <%= link_to booking_path(booking) do %>
+                <td><%= booking.user.first_name%>
+                <td><%= booking.chicken.user.first_name%>
                 <td><%= booking.chicken.name%>
                   <%= cl_image_tag booking.chicken.photo, width: 50, height: 40, crop: :fill %>
                 </td>
