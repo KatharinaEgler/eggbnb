@@ -4,7 +4,7 @@ class ChickensController < ApplicationController
 
   def index
     # PUNDIT:
-    @chickens = policy_scope(Chicken)
+    @chickens = policy_scope(Chicken.geocoded)
 
     # GEOMAP:
     # @chickens = Chicken.geocoded
@@ -47,7 +47,7 @@ class ChickensController < ApplicationController
   end
 
   def update
-    authorize @restaurant
+    authorize @chicken
 
     if @chicken.update(chicken_params)
       redirect_to chicken_path(@chicken)

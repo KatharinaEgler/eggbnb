@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action do
-    @conversation = Conversation.find(params[:conversation_id])
+    @conversation = policy_scope(Conversation.find(params[:conversation_id]))
   end
 
   def index
@@ -28,6 +28,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = @conversation.messages.new(message_params)
+    authorize @message
     if @message.save
       redirect_to conversation_messages_path(@conversation)
     end

@@ -14,7 +14,7 @@
         <p class="chicken-price-comment">per day</p>
       </div>
       <div>
-        <p class="avatar-bordered">chicken owner</p>
+        <p class="avatar-bordered"> <%= @chicken.user.first_name %></p>
       </div>
 
       <%= link_to "Back to all chickens", chickens_path %>
