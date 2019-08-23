@@ -1,38 +1,70 @@
-<div class="container">
-  <div class="ui segment">
-   <h3>Mailbox</h3>
-   <h4>All your messages can be found here</h4>
-   <div class="ui list">
-    <div class="item">
-     <% @conversations.each do |conversation| %>
-     <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-      <% if conversation.sender_id == current_user.id %>
-        <% recipient = User.find(conversation.recipient_id) %>
-      <% else %>
-        <% recipient = User.find(conversation.sender_id) %>
+<div style='display: flex; justify-content: center; background-image: url("https://res.cloudinary.com/dd9qabk1u/image/upload/v1566586234/pexels-photo-1423601_gwihbr.jpg"); background-size: cover; background-position: center' >
+  <div class="container" style= 'height: 75vh; width: 70vh; opacity: 1; margin-top: 50px; margin-bottom: 50px'>
+    <div class="ui segment" style= 'height: 100%; opacity: 1; background-color: rgba(255,255,255,0.9)'>
+     <h3>Mailbox</h3>
+     <h4>All your messages can be found here</h4>
+     <div class="ui list">
+      <div class="item">
+       <% @conversations.each do |conversation| %>
+       <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+        <% if conversation.sender_id == current_user.id %>
+          <% recipient = User.find(conversation.recipient_id) %>
+        <% else %>
+          <% recipient = User.find(conversation.sender_id) %>
+        <% end %>
+            <div class="item" style='
+              display: flex;
+              border: 1px solid rgba(0,0,0,0.1);
+              width: 150px;
+              justify-content: space-evenly;
+              align-items: center;
+              border-radius: 5px;
+              padding: 10px;
+              margin: 10px;
+              opacity: 1;
+              background-color: white;
+            '>
+              <%= cl_image_tag conversation.recipient.photo, class: "avatar dropdown-toggle" %>
+              <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
+            </div>
+       <% end %>
       <% end %>
-        <ul>
-          <div class="item">
-          <li><%= link_to recipient.first_name, conversation_messages_path(conversation)%></li>
-          </div>
-        </ul>
-     <% end %>
-    <% end %>
-    </div>
-   </div>
-  </div>
-  <br>
-  <div class="ui segment">
-   <h3>All your contacts</h3>
-   <h4>Choose who you want to contact</h4>
-    <div class="ui list">
-     <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
-       <div class="item">
-     <%= cl_image_tag user.photo, class: "avatar dropdown-toggle" %> <%=  user.first_name %> <%=  link_to "Send message", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: "btn btn-primary btn-sm" %>
       </div>
-    <% end %>
-   <% end %>
-   </div>
+     </div>
+    </div>
+  </div>
+    <br>
+
+    <div class="container" style= 'height: 75vh; width: 70vh; opacity: 1; margin-top: 50px; margin-bottom: 50px'>
+      <div class="ui segment" style= 'height: 100%; opacity: 1; background-color: rgba(255,255,255,0.9); overflow-y: scroll'>
+       <h3>All your contacts</h3>
+       <h4>Choose who you want to contact</h4>
+        <div class="ui list">
+         <% @users.each do |user| %>
+          <% if user.id != current_user.id %>
+            <div class="item" style='
+              display: flex;
+              border: 1px solid rgba(0,0,0,0.1);
+              width: 305px;
+              justify-content: space-between;
+              align-items: center;
+              border-radius: 5px;
+              padding: 10px;
+              margin: 10px;
+              opacity: 1;
+              background-color: white;
+              height: 80px;
+            '>
+              <%= cl_image_tag user.photo, class: "avatar dropdown-toggle" %>
+              <p class="names_messages"><%=  user.first_name %></p>
+              <div class="description">
+                <%=  link_to "Send message", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: "btn btn-primary btn-sm" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+          </div>
+       </div>
+    </div>
   </div>
 </div>
