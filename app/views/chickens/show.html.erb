@@ -28,12 +28,13 @@
     <div class="footer-description">
        <p>Belongs to: <%= @chicken.user.first_name%></p>
       <%= cl_image_tag @chicken.user.photo, height: 50, width: 50, crop: :fill %>
-      <p><div><%= link_to "Send message", new_user_session_path, class: "btn btn-primary" %></div></p>
+      <p><div><%= link_to "Send message", conversations_path(sender_id: current_user, recipient_id: @chicken.user), method: :post, class: "btn btn-primary" %></div></p>
     </div>
+    <br>
     <% if policy(@chicken).edit? %>
     <div><%= link_to "Edit", edit_chicken_path(@chicken), class: "btn btn-primary" %></div>
     <% end %>
-
+<br>
 <p><% if policy(@chicken).destroy? %>
     <div><%= link_to "Delete", chicken_path(@chicken), method: :delete, class: "btn btn-primary" %></div>
     <% end %></p>

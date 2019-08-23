@@ -24,8 +24,13 @@
               opacity: 1;
               background-color: white;
             '>
-              <%= cl_image_tag conversation.recipient.photo, class: "avatar dropdown-toggle" %>
-              <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
+              <% if conversation.recipient == current_user %>
+                <%= cl_image_tag conversation.sender.photo, class: "avatar dropdown-toggle" %>
+                <%= link_to conversation.sender.first_name, conversation_messages_path(conversation)%>
+              <% else %>
+                <%= cl_image_tag conversation.recipient.photo, class: "avatar dropdown-toggle" %>
+                <%= link_to conversation.recipient.first_name, conversation_messages_path(conversation)%>
+              <% end %>
             </div>
        <% end %>
       <% end %>

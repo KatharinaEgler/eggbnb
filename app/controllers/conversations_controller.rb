@@ -10,6 +10,7 @@ class ConversationsController < ApplicationController
   def create
     if Conversation.between(params[:sender_id], params[:recipient_id]).present?
       @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
+      authorize @conversation
     else
       @conversation = Conversation.new(conversation_params)
       authorize @conversation
