@@ -8,6 +8,8 @@
 User.destroy_all
 Chicken.destroy_all
 Booking.destroy_all
+Message.destroy_all
+Conversation.destroy_all
 
 joana = User.new(first_name: "Joana", last_name: "Smith", location: "Montreal", rating: 5, email: "joana@email.com", password: "chicken", remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566572094/courtney_cmqmbb.jpg")
 joana.save!
@@ -30,7 +32,7 @@ roberta = Chicken.new(name: "Roberta", address:"3564 Rue Saint-Denis, Montreal",
 roberta.save!
 pia = Chicken.new(name: "Pia", address:"5333 Av. Casgrain, Montreal", age: 3, egg_color: "brown", price: 0.4, egg_volume: 1, description: "She is a bit loud", user_id: maria.id, remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566414586/shannon-vandenheuvel-bI9AeUn15_A-unsplash_cbeeca.jpg")
 pia.save!
-hugo = Chicken.new(name: "Hugo", address:"1251 Rue Gilford, Montréal", age: 1, egg_color: "white", price: 0.3, egg_volume: 1, description: "She is very good with animals", user_id: samuel.id, remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566419185/vidar-nordli-mathisen-dC-z4r8tr6U-unsplash_mjoojj.jpg")
+hugo = Chicken.new(name: "Hugo", address:"1251 Rue Gilford, Montréal", age: 1, egg_color: "blue", price: 0.3, egg_volume: 1, description: "She is very good with animals", user_id: samuel.id, remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566419185/vidar-nordli-mathisen-dC-z4r8tr6U-unsplash_mjoojj.jpg")
 hugo.save!
 
 bossy = Chicken.new(name: "Bossy", address:"4581 Park Ave, Montreal", age: 5, egg_color: "pink", price: 0.6, egg_volume: 4, description: "I enjoy spending time with children and dogs, and never miss a meal. My hobbies include eating bugs, wandering the yard and laying eggs. DM me for more information.", user_id: maria.id,remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566573112/ehud-neuhaus-LJOTTEf6DaQ-unsplash_p8zly6.jpg")
