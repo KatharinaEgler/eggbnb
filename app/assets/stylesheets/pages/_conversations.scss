@@ -19,4 +19,17 @@
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
+  padding-top: 0;
+  display: flex;
+  border: 1px solid rgba(0,0,0,0.1);
+  width: 305px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.names_messages {
+  margin: 0;
 }
