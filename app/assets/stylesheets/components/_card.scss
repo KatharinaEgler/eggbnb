@@ -1,3 +1,15 @@
+.chicken-index {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+}
+
+.chick-container {
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr;

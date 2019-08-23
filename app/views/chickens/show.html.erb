@@ -1,41 +1,50 @@
 <div class="container">
-  <h1 class="chicken-name"> <%= @chicken.name %> </h1>
-  <%= link_to "Back to all chickens", chickens_path %>
-<br>
-  <%= cl_image_tag @chicken.photo, height: 300, width: 1000, crop: :fill %>
+  <div class="chicken-container">
+    <%= cl_image_tag @chicken.photo, height: 500, width: 1000, crop: :fill %>
+      <h1 class="chicken-name"> <%= @chicken.name %> </h1>
+      <div class="chicken-price-card">
+        <p class="chiken-price"> $<%= @chicken.price %></p>
+        <p class="chicken-price-comment">per day</p>
+      </div>
+      <div>
+        <p class="avatar-bordered">chicken owner</p>
+      </div>
 
-  <div class="row">
-    <h3>Chicken characteristic</h3>
-    <table class="table table-bordered">
-      <tbody>
-        <thead>
-          <th>Age</th>
-          <th>Egg number per day</th>
-          <th>Egg color</th>
-          <th>Description</th>
-        </thead>
-          <tr>
-            <td><%= @chicken.age %> years old</td>
-            <td>
-              <% @chicken.egg_volume.times do %>
-                <i class="fas fa-egg"></i>
-              <% end %>
+      <%= link_to "Back to all chickens", chickens_path %>
+
+    <div class="row">
+      <h3><%= @chicken.name %> characteristic</h3>
+      <table class="table table-bordered">
+        <tbody>
+          <thead>
+            <th>Age</th>
+            <th>Egg number per day</th>
+            <th>Egg color</th>
+            <th>Description</th>
+          </thead>
+            <tr>
+              <td><%= @chicken.age %> years old</td>
+              <td>
+                <% @chicken.egg_volume.times do %>
+                  <i class="fas fa-egg"></i>
+                <% end %>
+                </td>
+              <td><%= @chicken.egg_color %></td>
+              <td><%= @chicken.description %></td>
               </td>
-            <td><%= @chicken.egg_color %></td>
-            <td><%= @chicken.description %></td>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <% if policy(@chicken).edit? %>
+    <div><%= link_to "Edit", edit_chicken_path(@chicken), class: "btn btn-primary" %></div>
+    <% end %>
+
+    <% if policy(@chicken).destroy? %>
+    <div><%= link_to "Delete", chicken_path(@chicken), method: :delete, class: "btn btn-primary" %></div>
+    <% end %>
   </div>
-
-<% if policy(@chicken).edit? %>
-<div><%= link_to "Edit", edit_chicken_path(@chicken), class: "btn btn-primary" %></div>
-<% end %>
-
-<% if policy(@chicken).destroy? %>
-<div><%= link_to "Delete", chicken_path(@chicken), method: :delete, class: "btn btn-primary" %></div>
-<% end %>
 
 <!-- Button trigger modal -->
 <% if current_user == nil %>
