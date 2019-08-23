@@ -2,6 +2,8 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = policy_scope(Booking)
+    @my_chickens = @bookings.joins(:chicken).where(chickens: { user: current_user })
+    @my_bookings = @bookings.where(user: current_user)
   end
 
   def show
@@ -13,6 +15,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.chicken = @chicken
     @booking.user = current_user
+    authorize @booking
     if @booking.save!
       redirect_to bookings_path
     else
@@ -24,6 +27,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    authorize @booking
     @booking.update(status: params[:status])
     redirect_to bookings_path
   end
