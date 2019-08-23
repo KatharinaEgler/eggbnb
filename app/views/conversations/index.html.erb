@@ -1,15 +1,16 @@
 <div class=”ui segment”>
  <h3>Mailbox</h3>
+ <h2>All your messages can be found here</h2>
  <div class=”ui list”>
   <div class=”item”>
    <% @conversations.each do |conversation| %>
-   <% if conversation.sender_id == current_user.id ||      conversation.recipient_id == current_user.id %>
+   <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
     <% if conversation.sender_id == current_user.id %>
       <% recipient = User.find(conversation.recipient_id) %>
     <% else %>
       <% recipient = User.find(conversation.sender_id) %>
     <% end %>
-    <%= link_to recipient.first_name,   conversation_messages_path(conversation)%>
+    <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
    <% end %>
   <% end %>
   </div>
@@ -17,12 +18,13 @@
 </div>
 <br>
 <div class=”ui segment”>
- <h3>All Users</h3>
+ <h3>All your contacts</h3>
+ <h2>Choose who you want to contact</h2>
   <div class=”ui list”>
    <% @users.each do |user| %>
     <% if user.id != current_user.id %>
      <div class=”item”>
-   <%= user.first_name %> <%= link_to "Send message", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' %>
+   <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle" %> <%=  user.first_name %> <%=  link_to "Send message", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: "btn btn-primary btn-sm" %>
  </div>
   <% end %>
  <% end %>
