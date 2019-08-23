@@ -18,12 +18,11 @@ class BookingsController < ApplicationController
     authorize @booking
     if @booking.save!
       redirect_to bookings_path
+      flash[:notice] = "Booking successfully created"
     else
        render "chickens/show"
      end
   end
-
-
 
   def update
     @booking = Booking.find(params[:id])
