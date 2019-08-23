@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.chicken = @chicken
     @booking.user = current_user
+    authorize @booking
     if @booking.save!
       redirect_to bookings_path
     else
