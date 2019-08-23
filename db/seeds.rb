@@ -13,6 +13,8 @@ john = User.new(first_name: "John", last_name: "Smith", location: "Montreal", ra
 john.save!
 bill = User.new(first_name: "Bill", last_name: "Farmer", location: "Montreal", rating: 5, email: "bill@email.com", password: "chicken", remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566414586/gregory-hayes-QFmNQXLPbZc-unsplash_uzib8w.jpg")
 bill.save!
+nora = User.new(first_name: "Nora", last_name: "Fischer", location: "Montreal", rating: 4, email: "nora@email.com", password: "chicken", remote_photo_url: "https://res.cloudinary.com/dd9qabk1u/image/upload/v1566514738/sage-kirk-Wx2AjoLtpcU-unsplash_u74amp.jpg")
+nora.save!
 
 #Chicken.create!(name: "Hugo")
 
