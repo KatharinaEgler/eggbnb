@@ -24,10 +24,14 @@ const initMapbox = () => {
       element.style.width = '30px';
       element.style.height = '40px';
 
+      const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+
       new mapboxgl.Marker(element)
         .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
         .addTo(map);
     });
+
     fitMapToMarkers(map, markers);
   }
 };
