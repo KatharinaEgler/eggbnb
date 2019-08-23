@@ -12,8 +12,8 @@ class ChickensController < ApplicationController
       {
        lat: chicken.latitude,
        lng: chicken.longitude,
-       image_url: helpers.asset_url('logo1.png')
-       # infoWindow: render_to_string(partial: "info_window", locals: { chicken: chicken })
+       image_url: helpers.asset_url('logo1.png'),
+       infoWindow: render_to_string(partial: "info_window", locals: { chicken: chicken })
       }
     end
   end
