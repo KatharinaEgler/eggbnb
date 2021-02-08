@@ -5,7 +5,7 @@ gem 'geocoder'
 gem 'devise'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.9.1'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 # PUNDIT : Manage CRUD with specific user
 gem 'pundit'
 
